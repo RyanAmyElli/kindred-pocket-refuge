@@ -5,16 +5,23 @@ import { Button } from '@/components/ui/button';
 import MoodSelector from '@/components/MoodSelector';
 import MoodLetter from '@/components/MoodLetter';
 import BreathingExercise from '@/components/BreathingExercise';
-import { Heart } from 'lucide-react';
+import ImageGallery from '@/components/ImageGallery';
+import { Heart, Gallery } from 'lucide-react';
 
 const Index = () => {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
   const [showBreathing, setShowBreathing] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
 
   const resetToHome = () => {
     setSelectedMood(null);
     setShowBreathing(false);
+    setShowGallery(false);
   };
+
+  if (showGallery) {
+    return <ImageGallery onBack={() => setShowGallery(false)} />;
+  }
 
   if (showBreathing) {
     return <BreathingExercise onBack={() => setShowBreathing(false)} />;
@@ -58,13 +65,21 @@ const Index = () => {
         {/* Mood Selector */}
         <MoodSelector onMoodSelect={setSelectedMood} />
 
-        {/* Quick Breathing Exercise */}
-        <div className="mt-8 text-center animate-fade-in">
+        {/* Action Buttons */}
+        <div className="mt-8 space-y-4 animate-fade-in">
           <Button
             onClick={() => setShowBreathing(true)}
-            className="bg-gradient-to-r from-teal-300 to-blue-300 hover:from-teal-400 hover:to-blue-400 text-white border-0 rounded-full px-8 py-3 shadow-lg transform transition-all duration-200 hover:scale-105"
+            className="w-full bg-gradient-to-r from-teal-300 to-blue-300 hover:from-teal-400 hover:to-blue-400 text-white border-0 rounded-full px-8 py-3 shadow-lg transform transition-all duration-200 hover:scale-105"
           >
             Take a Gentle Breath 🌸
+          </Button>
+          
+          <Button
+            onClick={() => setShowGallery(true)}
+            className="w-full bg-gradient-to-r from-pink-300 to-rose-300 hover:from-pink-400 hover:to-rose-400 text-white border-0 rounded-full px-8 py-3 shadow-lg transform transition-all duration-200 hover:scale-105"
+          >
+            <Gallery className="w-5 h-5 mr-2" />
+            Peaceful Gallery 🖼️
           </Button>
         </div>
 
