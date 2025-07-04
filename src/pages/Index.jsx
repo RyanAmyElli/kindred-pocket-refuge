@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ import ImageGallery from '@/components/ImageGallery';
 import { Heart, GalleryHorizontal } from 'lucide-react';
 
 const Index = () => {
-  const [selectedMood, setSelectedMood] = useState<string | null>(null);
+  const [selectedMood, setSelectedMood] = useState(null);
   const [showBreathing, setShowBreathing] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
 

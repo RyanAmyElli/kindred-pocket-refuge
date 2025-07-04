@@ -1,12 +1,7 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, X } from 'lucide-react';
-
-interface ImageGalleryProps {
-  onBack: () => void;
-}
 
 const galleryImages = [
   {
@@ -83,8 +78,8 @@ const galleryImages = [
   }
 ];
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ onBack }) => {
-  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
+const ImageGallery = ({ onBack }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-purple-50 to-indigo-50 p-4">

@@ -3,18 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
-interface BreathingExerciseProps {
-  onBack: () => void;
-}
-
-const BreathingExercise: React.FC<BreathingExerciseProps> = ({ onBack }) => {
+const BreathingExercise = ({ onBack }) => {
   const [isActive, setIsActive] = useState(false);
-  const [phase, setPhase] = useState<'inhale' | 'hold' | 'exhale'>('inhale');
+  const [phase, setPhase] = useState('inhale');
   const [seconds, setSeconds] = useState(4);
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
+    let interval = null;
 
     if (isActive) {
       interval = setInterval(() => {

@@ -2,10 +2,6 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 
-interface MoodSelectorProps {
-  onMoodSelect: (mood: string) => void;
-}
-
 const moods = [
   { id: 'sad', label: 'Feeling Sad', emoji: '💙', color: 'from-blue-200 to-indigo-200', hoverColor: 'hover:from-blue-300 hover:to-indigo-300' },
   { id: 'scared', label: 'Feeling Scared', emoji: '🤗', color: 'from-purple-200 to-pink-200', hoverColor: 'hover:from-purple-300 hover:to-pink-300' },
@@ -15,7 +11,7 @@ const moods = [
   { id: 'anxious', label: 'Feeling Anxious', emoji: '🕊️', color: 'from-slate-200 to-gray-200', hoverColor: 'hover:from-slate-300 hover:to-gray-300' },
 ];
 
-const MoodSelector: React.FC<MoodSelectorProps> = ({ onMoodSelect }) => {
+const MoodSelector = ({ onMoodSelect }) => {
   return (
     <div>
       <h2 className="text-xl font-light text-gray-600 text-center mb-6 animate-fade-in">

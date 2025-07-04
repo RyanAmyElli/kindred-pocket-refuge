@@ -1,14 +1,7 @@
-
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-
-interface MoodLetterProps {
-  mood: string;
-  onBack: () => void;
-  onBreathing: () => void;
-}
 
 const moodLetters = {
   sad: {
@@ -115,8 +108,8 @@ Your calm in the chaos 🌊`
   }
 };
 
-const MoodLetter: React.FC<MoodLetterProps> = ({ mood, onBack, onBreathing }) => {
-  const letter = moodLetters[mood as keyof typeof moodLetters];
+const MoodLetter = ({ mood, onBack, onBreathing }) => {
+  const letter = moodLetters[mood];
 
   if (!letter) {
     return (
