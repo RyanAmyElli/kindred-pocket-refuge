@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,7 @@ import MoodSelector from '@/components/MoodSelector';
 import MoodLetter from '@/components/MoodLetter';
 import BreathingExercise from '@/components/BreathingExercise';
 import ImageGallery from '@/components/ImageGallery';
-import { Heart, Gallery } from 'lucide-react';
+import { Heart, GalleryHorizontal } from 'lucide-react';
 
 const Index = () => {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);
@@ -78,7 +77,7 @@ const Index = () => {
             onClick={() => setShowGallery(true)}
             className="w-full bg-gradient-to-r from-pink-300 to-rose-300 hover:from-pink-400 hover:to-rose-400 text-white border-0 rounded-full px-8 py-3 shadow-lg transform transition-all duration-200 hover:scale-105"
           >
-            <Gallery className="w-5 h-5 mr-2" />
+            <GalleryHorizontal className="w-5 h-5 mr-2" />
             Peaceful Gallery 🖼️
           </Button>
         </div>
