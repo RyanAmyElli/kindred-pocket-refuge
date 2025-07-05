@@ -107,7 +107,7 @@ const BreathingExercise = ({ onBack }) => {
                 Take this sense of calm with you.
               </p>
             </div>
-          </Card>
+          </div>
         )}
       </div>
     </div>
