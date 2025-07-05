@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import Header from './Header';
+import BreathingCircle from './BreathingCircle';
 
 const BreathingExercise = ({ onBack }) => {
   const [isActive, setIsActive] = useState(false);
@@ -16,7 +18,6 @@ const BreathingExercise = ({ onBack }) => {
       interval = setInterval(() => {
         setSeconds(seconds => {
           if (seconds === 1) {
-            // Move to next phase
             if (phase === 'inhale') {
               setPhase('hold');
               return 4;
@@ -39,28 +40,6 @@ const BreathingExercise = ({ onBack }) => {
     };
   }, [isActive, phase]);
 
-  const getPhaseText = () => {
-    switch (phase) {
-      case 'inhale':
-        return 'Breathe In...';
-      case 'hold':
-        return 'Hold...';
-      case 'exhale':
-        return 'Breathe Out...';
-    }
-  };
-
-  const getCircleScale = () => {
-    switch (phase) {
-      case 'inhale':
-        return 'scale-110';
-      case 'hold':
-        return 'scale-110';
-      case 'exhale':
-        return 'scale-90';
-    }
-  };
-
   const startExercise = () => {
     setIsActive(true);
     setPhase('inhale');
@@ -77,18 +56,7 @@ const BreathingExercise = ({ onBack }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-indigo-50 p-4">
       <div className="max-w-md mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8 pt-4">
-          <Button
-            onClick={onBack}
-            variant="ghost"
-            className="text-gray-600 hover:text-gray-800"
-          >
-            ← Back
-          </Button>
-          <h1 className="text-xl font-light text-gray-700">Gentle Breathing</h1>
-          <div className="w-16" /> {/* Spacer */}
-        </div>
+        <Header onBack={onBack} title="Gentle Breathing" />
 
         {/* Instructions */}
         <Card className="bg-white/70 backdrop-blur-sm border-0 shadow-xl mb-8 animate-fade-in">
@@ -103,25 +71,7 @@ const BreathingExercise = ({ onBack }) => {
           </div>
         </Card>
 
-        {/* Breathing Circle */}
-        <div className="text-center mb-8">
-          <div className="relative inline-flex items-center justify-center">
-            {/* Outer circle */}
-            <div className="w-64 h-64 rounded-full border-2 border-teal-200 opacity-30"></div>
-            
-            {/* Animated circle */}
-            <div className={`absolute w-48 h-48 rounded-full bg-gradient-to-br from-teal-200 to-blue-300 transition-transform duration-1000 ease-in-out ${getCircleScale()}`}>
-              <div className="w-full h-full flex flex-col items-center justify-center text-white">
-                <div className="text-2xl font-light mb-2">
-                  {getPhaseText()}
-                </div>
-                <div className="text-4xl font-light">
-                  {seconds}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <BreathingCircle phase={phase} seconds={seconds} />
 
         {/* Controls */}
         <div className="text-center space-y-4">
@@ -157,7 +107,7 @@ const BreathingExercise = ({ onBack }) => {
                 Take this sense of calm with you.
               </p>
             </div>
-          </Card>
+          </div>
         )}
       </div>
     </div>
