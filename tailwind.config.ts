@@ -105,13 +105,22 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'letter-float': {
+					'0%, 100%': {
+						transform: 'translateY(0px) rotate(0deg)'
+					},
+					'50%': {
+						transform: 'translateY(-5px) rotate(1deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out'
+				'scale-in': 'scale-in 0.2s ease-out',
+				'letter-float': 'letter-float 3s ease-in-out infinite'
 			}
 		}
 	},
